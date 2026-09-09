@@ -1,0 +1,2255 @@
+/* =========================================================
+   PHEBETH-PEC INTERNATIONAL SCHOOL
+   Main Stylesheet
+   ========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+    --navy: #09284f;
+    --navy-dark: #061d3b;
+    --navy-light: #123d70;
+
+    --orange: #f45116;
+    --orange-light: #ff6a2b;
+    --orange-pale: #fff1e9;
+
+    --white: #ffffff;
+    --cream: #fdfbf8;
+    --light-bg: #f7f5f1;
+    --light-blue: #eef4f9;
+
+    --text: #142238;
+    --text-light: #657080;
+    --border: #e4e7eb;
+
+    --shadow-sm: 0 8px 25px rgba(9, 40, 79, 0.07);
+    --shadow-md: 0 15px 45px rgba(9, 40, 79, 0.10);
+    --shadow-lg: 0 25px 70px rgba(9, 40, 79, 0.15);
+
+    --radius-sm: 10px;
+    --radius-md: 18px;
+    --radius-lg: 28px;
+    --radius-xl: 38px;
+
+    --transition: 0.3s ease;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+
+/* =========================================================
+   3. GENERAL UTILITIES
+   ========================================================= */
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin-inline: auto;
+}
+
+.section {
+    padding: 110px 0;
+}
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 14px;
+
+    color: var(--orange);
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin-bottom: 55px;
+}
+
+.section-heading.centered {
+    margin-inline: auto;
+    text-align: center;
+}
+
+.section-heading h2,
+.about-content h2,
+.values-heading h2,
+.gallery-heading h2,
+.contact-content h2 {
+    color: var(--navy);
+
+    font-family: "Fraunces", serif;
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 900;
+    line-height: 1.08;
+}
+
+.section-heading p {
+    max-width: 650px;
+    margin-top: 20px;
+
+    color: var(--text-light);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   4. HEADER
+   ========================================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(253, 251, 248, 0.94);
+    border-bottom: 1px solid rgba(9, 40, 79, 0.08);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    transition:
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+.site-header.scrolled {
+    box-shadow: 0 8px 30px rgba(9, 40, 79, 0.08);
+}
+
+.navbar {
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+.brand-logo {
+    width: 52px;
+    height: 52px;
+
+    object-fit: contain;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    color: var(--navy);
+
+    font-family: "Fraunces", serif;
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.brand-subtitle {
+    margin-top: 4px;
+
+    color: var(--orange);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+   ========================================================= */
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.desktop-nav > a:not(.nav-button) {
+    position: relative;
+
+    transition: color var(--transition);
+}
+
+.desktop-nav > a:not(.nav-button)::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--orange);
+
+    transition: width var(--transition);
+}
+
+.desktop-nav > a:not(.nav-button):hover {
+    color: var(--orange);
+}
+
+.desktop-nav > a:not(.nav-button):hover::after {
+    width: 100%;
+}
+
+
+/* Navigation CTA */
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 45px;
+    padding: 0 22px;
+
+    border-radius: 999px;
+
+    background: var(--orange);
+    color: var(--white);
+
+    box-shadow: 0 8px 20px rgba(244, 81, 22, 0.18);
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+.nav-button:hover {
+    background: var(--orange-light);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 28px rgba(244, 81, 22, 0.25);
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 46px;
+    height: 46px;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: transparent;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 22px;
+    height: 2px;
+
+    border-radius: 20px;
+
+    background: var(--navy);
+
+    transition: transform var(--transition);
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+.mobile-nav {
+    display: none;
+
+    padding: 12px 20px 25px;
+
+    background: var(--cream);
+
+    border-top: 1px solid var(--border);
+}
+
+.mobile-nav a {
+    display: block;
+
+    padding: 14px 15px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+.mobile-nav a:hover {
+    background: var(--orange-pale);
+    color: var(--orange);
+}
+
+.mobile-nav.open {
+    display: block;
+}
+
+
+/* =========================================================
+   5. HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    padding: 85px 0 115px;
+
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    right: -220px;
+    top: -180px;
+
+    border-radius: 50%;
+
+    background: var(--orange-pale);
+
+    z-index: -1;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+
+    align-items: center;
+
+    gap: 75px;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.eyebrow {
+    display: inline-flex;
+
+    padding: 8px 15px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid rgba(244, 81, 22, 0.35);
+    border-radius: 999px;
+
+    color: var(--orange);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    max-width: 680px;
+
+    color: var(--navy);
+
+    font-family: "Fraunces", serif;
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 900;
+    line-height: 1.02;
+}
+
+.hero-content h1 span {
+    color: var(--orange);
+}
+
+.hero-content > p {
+    max-width: 600px;
+
+    margin-top: 24px;
+
+    color: var(--text-light);
+
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 52px;
+
+    padding: 0 25px;
+
+    border: 2px solid transparent;
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-primary {
+    background: var(--orange);
+    color: var(--white);
+
+    box-shadow: 0 12px 25px rgba(244, 81, 22, 0.18);
+}
+
+.btn-primary:hover {
+    background: var(--orange-light);
+
+    box-shadow: 0 16px 30px rgba(244, 81, 22, 0.25);
+}
+
+.btn-outline {
+    border-color: var(--navy);
+
+    background: transparent;
+    color: var(--navy);
+}
+
+.btn-outline:hover {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.btn-light {
+    background: var(--white);
+    color: var(--navy);
+}
+
+.btn-light:hover {
+    background: var(--orange-pale);
+}
+
+.btn-dark {
+    border-color: var(--navy);
+
+    background: var(--navy);
+    color: var(--white);
+}
+
+.btn-dark:hover {
+    background: var(--navy-dark);
+}
+
+.btn-arrow {
+    font-size: 18px;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+   ========================================================= */
+
+.hero-visual {
+    position: relative;
+
+    width: 100%;
+    max-width: 550px;
+
+    margin-left: auto;
+}
+
+.hero-image-wrapper {
+    position: relative;
+
+    aspect-ratio: 6 / 7;
+
+    overflow: hidden;
+
+    border-radius: var(--radius-xl);
+
+    background: var(--light-bg);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-image-wrapper::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(9, 40, 79, 0.20),
+        transparent 45%
+    );
+
+    pointer-events: none;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.8s ease;
+}
+
+.hero-image-wrapper:hover .hero-image {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   MOTTO CARD
+   ========================================================= */
+
+.motto-card {
+    position: absolute;
+
+    left: -28px;
+    bottom: -25px;
+
+    width: min(340px, 75%);
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background: var(--navy);
+    color: var(--white);
+
+    box-shadow: 0 20px 50px rgba(9, 40, 79, 0.25);
+}
+
+.motto-card p {
+    color: var(--white);
+
+    font-family: "Fraunces", serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.motto-card span {
+    display: block;
+
+    margin-top: 9px;
+
+    color: var(--orange);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   6. HIGHLIGHTS
+   ========================================================= */
+
+.highlights {
+    padding: 35px 0;
+
+    background: var(--navy);
+
+    color: var(--white);
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 18px;
+
+    padding: 10px 10px;
+}
+
+.highlight-number {
+    color: var(--orange);
+
+    font-family: "Fraunces", serif;
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.highlight-item h3 {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.highlight-item p {
+    margin-top: 5px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   7. ACADEMICS
+   ========================================================= */
+
+.academics {
+    background: var(--light-bg);
+}
+
+.academic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.academic-card {
+    overflow: hidden;
+
+    border-radius: var(--radius-md);
+
+    background: var(--white);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.academic-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.card-image {
+    position: relative;
+
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: var(--light-bg);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.academic-card:hover .card-image img {
+    transform: scale(1.06);
+}
+
+.card-number {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: var(--orange);
+    color: var(--white);
+
+    font-family: "Fraunces", serif;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.card-content {
+    padding: 28px;
+}
+
+.card-category {
+    color: var(--orange);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.card-content h3 {
+    margin-top: 8px;
+
+    color: var(--navy);
+
+    font-family: "Fraunces", serif;
+    font-size: 25px;
+    line-height: 1.15;
+}
+
+.card-content p {
+    margin-top: 13px;
+
+    color: var(--text-light);
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 20px;
+
+    color: var(--navy);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    transition: color var(--transition);
+}
+
+.text-link span {
+    color: var(--orange);
+
+    font-size: 17px;
+
+    transition: transform var(--transition);
+}
+
+.text-link:hover {
+    color: var(--orange);
+}
+
+.text-link:hover span {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   8. ABOUT
+   ========================================================= */
+
+.about {
+    background: var(--navy);
+
+    color: var(--white);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+
+    align-items: center;
+
+    gap: 75px;
+}
+
+.about .section-label {
+    color: var(--orange);
+}
+
+.about-content h2 {
+    color: var(--white);
+}
+
+.about-content > p {
+    max-width: 650px;
+
+    margin-top: 22px;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   PURPOSE BLOCKS
+   ========================================================= */
+
+.purpose-block {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 17px;
+
+    margin-top: 30px;
+
+    padding-left: 17px;
+
+    border-left: 2px solid var(--orange);
+}
+
+.purpose-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: var(--orange);
+
+    color: var(--white);
+
+    font-family: "Fraunces", serif;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.purpose-block h3 {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.purpose-block p {
+    margin-top: 5px;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: 12px;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   VISION CARD
+   ========================================================= */
+
+.vision-card {
+    position: relative;
+
+    min-height: 430px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 50px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: var(--radius-lg);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.025)
+        );
+}
+
+.vision-decoration {
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -80px;
+    top: -80px;
+
+    border: 45px solid rgba(244, 81, 22, 0.12);
+    border-radius: 50%;
+}
+
+.vision-label {
+    position: relative;
+
+    color: var(--orange);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.vision-card blockquote {
+    position: relative;
+
+    margin-top: 25px;
+
+    color: var(--white);
+
+    font-family: "Fraunces", serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.vision-divider {
+    width: 60px;
+    height: 3px;
+
+    margin-top: 30px;
+
+    background: var(--orange);
+}
+
+.vision-card > p {
+    margin-top: 18px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   9. VALUES
+   ========================================================= */
+
+.values {
+    background: var(--cream);
+}
+
+.values-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    margin-bottom: 55px;
+}
+
+.values-heading p {
+    max-width: 430px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.value-card {
+    min-height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    background: var(--white);
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.value-card:nth-child(5),
+.value-card:nth-child(6),
+.value-card:nth-child(7) {
+    background: var(--navy);
+    border-color: var(--navy);
+
+    color: var(--white);
+}
+
+.value-card:hover {
+    transform: translateY(-7px);
+
+    border-color: var(--orange);
+
+    box-shadow: var(--shadow-md);
+}
+
+.value-card span {
+    color: var(--orange);
+
+    font-family: "Fraunces", serif;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.value-card h3 {
+    font-family: "Fraunces", serif;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   10. OBJECTIVES
+   ========================================================= */
+
+.objectives {
+    background: var(--light-bg);
+}
+
+.objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.objective-card {
+    position: relative;
+
+    padding: 32px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    background: var(--white);
+
+    overflow: hidden;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.objective-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 4px;
+    height: 0;
+
+    background: var(--orange);
+
+    transition: height var(--transition);
+}
+
+.objective-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.objective-card:hover::before {
+    height: 100%;
+}
+
+.objective-card > span {
+    color: var(--orange);
+
+    font-family: "Fraunces", serif;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.objective-card h3 {
+    margin-top: 8px;
+
+    color: var(--navy);
+
+    font-family: "Fraunces", serif;
+    font-size: 22px;
+}
+
+.objective-card p {
+    margin-top: 10px;
+
+    color: var(--text-light);
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   11. GALLERY
+   ========================================================= */
+
+.gallery {
+    background: var(--cream);
+}
+
+.gallery-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    margin-bottom: 50px;
+}
+
+.gallery-heading p {
+    max-width: 430px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns: 1.35fr 1fr 1fr;
+    grid-template-rows: 250px 250px;
+
+    gap: 15px;
+}
+
+.gallery-item {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: var(--radius-md);
+
+    background: var(--light-bg);
+}
+
+.gallery-large {
+    grid-row: span 2;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.7s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.07);
+}
+
+.gallery-overlay {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 45px 20px 18px;
+
+    background: linear-gradient(
+        to top,
+        rgba(6, 29, 59, 0.8),
+        transparent
+    );
+
+    color: var(--white);
+
+    transform: translateY(3px);
+
+    transition: transform var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay span {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   12. ADMISSIONS
+   ========================================================= */
+
+.admissions {
+    padding: 0 0 110px;
+
+    background: var(--cream);
+}
+
+.admissions-card {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+
+    overflow: hidden;
+
+    border-radius: var(--radius-lg);
+
+    background: var(--orange);
+
+    color: var(--white);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.admissions-content {
+    padding: 65px;
+}
+
+.admissions-content .section-label {
+    color: var(--white);
+    opacity: 0.9;
+}
+
+.admissions-content h2 {
+    max-width: 600px;
+
+    font-family: "Fraunces", serif;
+    font-size: clamp(40px, 5vw, 60px);
+    font-weight: 900;
+    line-height: 1.05;
+}
+
+.admissions-content > p {
+    max-width: 570px;
+
+    margin-top: 18px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.admissions-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 30px;
+}
+
+
+/* =========================================================
+   ADMISSION SIDE
+   ========================================================= */
+
+.admissions-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 35px;
+
+    background: var(--navy);
+
+    text-align: center;
+}
+
+.admission-badge {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 25px;
+
+    font-family: "Fraunces", serif;
+
+    text-transform: uppercase;
+}
+
+.admission-badge strong {
+    font-size: 22px;
+}
+
+.admission-badge span {
+    color: var(--orange);
+
+    font-size: 55px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.admissions-side > p {
+    color: rgba(255, 255, 255, 0.6);
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.class-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 15px;
+}
+
+.class-list span {
+    padding: 8px 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+
+    color: var(--white);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   13. CONTACT
+   ========================================================= */
+
+.contact {
+    background: var(--light-bg);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 80px;
+}
+
+.contact-content > p {
+    max-width: 500px;
+
+    margin-top: 20px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CONTACT ITEMS
+   ========================================================= */
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-top: 28px;
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: var(--orange-pale);
+
+    color: var(--orange);
+
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.contact-item > div:last-child > span {
+    color: var(--navy);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.contact-item p {
+    margin-top: 4px;
+
+    color: var(--text-light);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.contact-item a {
+    transition: color var(--transition);
+}
+
+.contact-item a:hover {
+    color: var(--orange);
+}
+
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+
+.contact-form-wrapper {
+    padding: 40px;
+
+    border-radius: var(--radius-lg);
+
+    background: var(--white);
+
+    box-shadow: var(--shadow-md);
+}
+
+.contact-form h3 {
+    color: var(--navy);
+
+    font-family: "Fraunces", serif;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.contact-form > p {
+    margin-top: 6px;
+
+    color: var(--text-light);
+
+    font-size: 13px;
+}
+
+.form-group {
+    margin-top: 22px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--navy);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    outline: none;
+
+    background: var(--light-bg);
+    color: var(--text);
+
+    font-size: 13px;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--orange);
+
+    background: var(--white);
+
+    box-shadow: 0 0 0 4px rgba(244, 81, 22, 0.08);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9ca5b0;
+}
+
+.form-button {
+    width: 100%;
+
+    margin-top: 25px;
+
+    border: 0;
+}
+
+
+/* =========================================================
+   14. FOOTER
+   ========================================================= */
+
+.site-footer {
+    background: var(--navy-dark);
+
+    color: var(--white);
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns: 1.5fr 0.8fr 1fr 0.8fr;
+
+    gap: 50px;
+
+    padding: 70px 0;
+}
+
+.footer-brand .brand-name {
+    color: var(--white);
+}
+
+.footer-brand p {
+    max-width: 300px;
+
+    margin-top: 20px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+.footer-column h3 {
+    margin-bottom: 17px;
+
+    color: var(--orange);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.footer-column a,
+.footer-column p {
+    margin-bottom: 9px;
+
+    color: rgba(255, 255, 255, 0.58);
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    transition: color var(--transition);
+}
+
+.footer-column a:hover {
+    color: var(--orange);
+}
+
+.footer-motto {
+    margin-top: 15px;
+
+    color: var(--white) !important;
+
+    font-family: "Fraunces", serif;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 0;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.4);
+
+    font-size: 10px;
+}
+
+.footer-bottom p:last-child {
+    color: var(--orange);
+}
+
+
+/* =========================================================
+   15. BACK TO TOP
+   ========================================================= */
+
+.back-to-top {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 900;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: var(--orange);
+    color: var(--white);
+
+    font-size: 18px;
+    font-weight: 800;
+
+    box-shadow: 0 10px 25px rgba(244, 81, 22, 0.25);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity var(--transition),
+        visibility var(--transition),
+        transform var(--transition);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--navy);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   16. SCROLL REVEAL ANIMATION
+   ========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   17. RESPONSIVE — LARGE TABLETS
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+    .container {
+        width: min(100% - 32px, 1000px);
+    }
+
+    .desktop-nav {
+        gap: 20px;
+    }
+
+    .hero-grid {
+        gap: 45px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(45px, 6vw, 64px);
+    }
+
+    .about-grid {
+        gap: 45px;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1.3fr 1fr 1fr;
+    }
+
+    .footer-column:last-child {
+        grid-column: 2 / 4;
+    }
+}
+
+
+/* =========================================================
+   18. RESPONSIVE — TABLETS
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .section {
+        padding: 85px 0;
+    }
+
+    /* Navigation */
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding: 65px 0 100px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+    .hero-content {
+        max-width: 700px;
+    }
+
+    .hero-visual {
+        margin-inline: auto;
+    }
+
+
+    /* Highlights */
+
+    .highlights-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+
+    /* Academics */
+
+    .academic-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .academic-card:last-child {
+        grid-column: 1 / -1;
+
+        max-width: calc(50% - 15px);
+        margin-inline: auto;
+    }
+
+
+    /* About */
+
+    .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .vision-card {
+        min-height: 350px;
+    }
+
+
+    /* Values */
+
+    .values-heading,
+    .gallery-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* Objectives */
+
+    .objectives-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Gallery */
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 260px 260px 260px;
+    }
+
+    .gallery-large {
+        grid-row: auto;
+        grid-column: 1 / -1;
+    }
+
+
+    /* Admissions */
+
+    .admissions-card {
+        grid-template-columns: 1fr;
+    }
+
+    .admissions-side {
+        padding: 45px 30px;
+    }
+
+
+    /* Contact */
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+
+    /* Footer */
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-column:last-child {
+        grid-column: auto;
+    }
+}
+
+
+/* =========================================================
+   19. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: min(100% - 28px, 100%);
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+
+
+    /* Brand */
+
+    .navbar {
+        min-height: 70px;
+    }
+
+    .brand-logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .brand-name {
+        font-size: 16px;
+    }
+
+    .brand-subtitle {
+        font-size: 8px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding: 50px 0 85px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(43px, 12vw, 60px);
+    }
+
+    .hero-content > p {
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-visual {
+        max-width: 100%;
+    }
+
+    .motto-card {
+        position: relative;
+
+        left: 15px;
+        bottom: auto;
+
+        width: calc(100% - 30px);
+
+        margin-top: -35px;
+    }
+
+
+    /* Section headings */
+
+    .section-heading h2,
+    .about-content h2,
+    .values-heading h2,
+    .gallery-heading h2,
+    .contact-content h2 {
+        font-size: 40px;
+    }
+
+
+    /* Academics */
+
+    .academic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .academic-card:last-child {
+        grid-column: auto;
+
+        max-width: none;
+    }
+
+
+    /* About */
+
+    .vision-card {
+        min-height: 320px;
+
+        padding: 30px;
+    }
+
+    .vision-card blockquote {
+        font-size: 28px;
+    }
+
+
+    /* Values */
+
+    .values-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .value-card {
+        min-height: 150px;
+
+        padding: 20px;
+    }
+
+    .value-card h3 {
+        font-size: 19px;
+    }
+
+
+    /* Objectives */
+
+    .objective-card {
+        padding: 25px;
+    }
+
+
+    /* Gallery */
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 250px);
+    }
+
+    .gallery-large {
+        grid-column: auto;
+    }
+
+
+    /* Admissions */
+
+    .admissions {
+        padding-bottom: 70px;
+    }
+
+    .admissions-content {
+        padding: 45px 25px;
+    }
+
+    .admissions-content h2 {
+        font-size: 42px;
+    }
+
+    .admissions-buttons {
+        flex-direction: column;
+    }
+
+    .admissions-buttons .btn {
+        width: 100%;
+    }
+
+
+    /* Contact */
+
+    .contact-form-wrapper {
+        padding: 25px 20px;
+    }
+
+
+    /* Footer */
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        padding: 55px 0;
+    }
+
+    .footer-column:last-child {
+        grid-column: auto;
+    }
+
+    .footer-bottom .container {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+}
+
+
+/* =========================================================
+   20. VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .brand-subtitle {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 41px;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .value-card {
+        min-height: 135px;
+    }
+
+    .vision-card {
+        padding: 25px;
+    }
+
+    .vision-card blockquote {
+        font-size: 25px;
+    }
+}
+
+
+/* =========================================================
+   21. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
